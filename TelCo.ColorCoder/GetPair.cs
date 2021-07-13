@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
@@ -10,29 +12,22 @@ namespace TelCo.ColorCoder
         /// </summary>
         /// <param name="pair">Color pair with major and minor color</param>
         /// <returns></returns>
+        private static int GetIndex(Color[] array, Color element )
+        {
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] == element)
+                    return i;
+            
+            return -1;
+        }
         public static int GetPairNumberFromColor(PairsDataModel.ColorPair pair)
         {
             // Find the major color in the array and get the index
-            int majorIndex = -1;
-            for (int i = 0; i < PairsDataModel.colorMapMajor.Length; i++)
-            {
-                if (PairsDataModel.colorMapMajor[i] == pair.majorColor)
-                {
-                    majorIndex = i;
-                    break;
-                }
-            }
+            int majorIndex = GetIndex(PairsDataModel.colorMapMajor, pair.majorColor);
 
             // Find the minor color in the array and get the index
-            int minorIndex = -1;
-            for (int i = 0; i < PairsDataModel.colorMapMinor.Length; i++)
-            {
-                if (PairsDataModel.colorMapMinor[i] == pair.minorColor)
-                {
-                    minorIndex = i;
-                    break;
-                }
-            }
+            int minorIndex = GetIndex(PairsDataModel.colorMapMinor, pair.minorColor);
+            
             // If colors can not be found throw an exception
             if (majorIndex == -1 || minorIndex == -1)
             {
