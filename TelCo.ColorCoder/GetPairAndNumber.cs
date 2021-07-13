@@ -3,8 +3,14 @@ using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
+
     public class GetPairAndNumber
     {
+        /// <summary>
+        /// Given a pair number function returns the major and minor colors in that order
+        /// </summary>
+        /// <param name="pairNumber">Pair number of the color to be fetched</param>
+        /// <returns></returns>
         public static PairsDataModel.ColorPair GetColorFromPairNumber(int pairNumber)
         {
             // The function supports only 1 based index. Pair numbers valid are from 1 to 25
@@ -22,7 +28,7 @@ namespace TelCo.ColorCoder
             int minorIndex = zeroBasedPairNumber % minorSize;
 
             // Construct the return val from the arrays
-            ColorPair pair = new ColorPair()
+            PairsDataModel.ColorPair pair = new PairsDataModel.ColorPair()
             {
                 majorColor = PairsDataModel.colorMapMajor[majorIndex],
                 minorColor = PairsDataModel.colorMapMinor[minorIndex]
@@ -31,7 +37,11 @@ namespace TelCo.ColorCoder
             // return the value
             return pair;
         }
-        
+        /// <summary>
+        /// Given the two colors the function returns the pair number corresponding to them
+        /// </summary>
+        /// <param name="pair">Color pair with major and minor color</param>
+        /// <returns></returns>
         public static int GetPairNumberFromColor(PairsDataModel.ColorPair pair)
         {
             // Find the major color in the array and get the index
