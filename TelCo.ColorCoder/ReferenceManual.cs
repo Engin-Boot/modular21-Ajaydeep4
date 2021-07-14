@@ -4,7 +4,7 @@ namespace TelCo.ColorCoder
 {
     public class ReferenceManual
     {
-        public static void Manual()
+        public static void PrintManual()
         {
         int pair_no = 1;
             int maj_size = PairsDataModel.colorMapMajor.Length  ;
