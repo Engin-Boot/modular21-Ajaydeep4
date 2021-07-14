@@ -16,23 +16,24 @@ namespace TelCo.ColorCoder
     {
         private static void Main(string[] args)
         {
-            int pairNumber = 4;
-            PairsDataModel.ColorPair testPair1 = GetColor.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.White);
-            Debug.Assert(testPair1.minorColor == Color.Brown);
+            ReferenceManual.PrintManual();
+            //for(int i=0; i< PairsDataModel.colorMapMajor.Length; ++i)
+            //    for(int i=0; i< PairsDataModel.colorMapMinor.Length; ++i)
+            //        Debug.Assert()
 
-            pairNumber = 5;
-            testPair1 = GetColor.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.White);
-            Debug.Assert(testPair1.minorColor == Color.SlateGray);
+            
+            //Testing for getting color code from pair numbers
+            int pairNumber = 1;
+            for (int i = 0; i < PairsDataModel.colorMapMajor.Length; ++i)
+                for (int j = 0; j < PairsDataModel.colorMapMinor.Length; ++j)
+                {
+                    PairsDataModel.ColorPair testPair = GetColor.GetColorFromPairNumber(pairNumber);
+                    Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair);
+                    Debug.Assert(testPair.majorColor == PairsDataModel.colorMapMajor[i]);
+                    Debug.Assert(testPair.minorColor == PairsDataModel.colorMapMinor[j]);
+                    pairNumber++;
 
-            pairNumber = 23;
-            testPair1 = GetColor.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.Violet);
-            Debug.Assert(testPair1.minorColor == Color.Green);
+                }
 
             PairsDataModel.ColorPair testPair2 = new PairsDataModel.ColorPair() { majorColor = Color.Yellow, minorColor = Color.Green };
             pairNumber = GetPair.GetPairNumberFromColor(testPair2);
