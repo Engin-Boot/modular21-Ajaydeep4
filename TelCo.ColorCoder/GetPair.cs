@@ -6,12 +6,6 @@ namespace TelCo.ColorCoder
 {
     public class GetPair
     {
-
-        /// <summary>
-        /// Given the two colors the function returns the pair number corresponding to them
-        /// </summary>
-        /// <param name="pair">Color pair with major and minor color</param>
-        /// <returns></returns>
         private static int GetIndex(Color[] array, Color element )
         {
             for (int i = 0; i < array.Length; i++)
@@ -35,8 +29,6 @@ namespace TelCo.ColorCoder
                     string.Format("Unknown Colors: {0}", pair.ToString()));
             }
 
-            // Compute pair number and Return  
-            // (Note: +1 in compute is because pair number is 1 based, not zero)
             return (majorIndex * PairsDataModel.colorMapMinor.Length) + (minorIndex + 1);
         }
     }

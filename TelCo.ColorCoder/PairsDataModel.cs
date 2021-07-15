@@ -6,15 +6,8 @@ namespace TelCo.ColorCoder
 {
 	public class PairsDataModel
 	{
-        /// <summary>
-        /// Array of Major colors
-        /// </summary>
-        public static Color[] colorMapMajor;
-        /// <summary>
-        /// Array of minor colors
-        /// </summary>
-        public static  Color[] colorMapMinor;
-
+        public static readonly Color[] colorMapMajor;
+        public static readonly Color[] colorMapMinor;
         /// <summary>
         /// data type defined to hold the two colors of clor pair
         /// </summary>
@@ -28,9 +21,6 @@ namespace TelCo.ColorCoder
             }
         }
 
-        /// <summary>
-        /// Static constructor required to initialize static variable
-        /// </summary>
         static PairsDataModel()
         {
             colorMapMajor = new Color[] { Color.White, Color.Red, Color.Black, Color.Yellow, Color.Violet };

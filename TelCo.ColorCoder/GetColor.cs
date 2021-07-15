@@ -6,11 +6,6 @@ namespace TelCo.ColorCoder
 
     public class GetColor
     {
-        /// <summary>
-        /// Given a pair number function returns the major and minor colors in that order
-        /// </summary>
-        /// <param name="pairNumber">Pair number of the color to be fetched</param>
-        /// <returns></returns>
         public static PairsDataModel.ColorPair GetColorFromPairNumber(int pairNumber)
         {
             // The function supports only 1 based index. Pair numbers valid are from 1 to 25
