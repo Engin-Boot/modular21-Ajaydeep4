@@ -8,10 +8,10 @@ namespace TelCo.ColorCoder
     {
         private static void Main(string[] args)
         {
-            ManualDelegate _manualPrintingAddress = new ManualDelegate(ReferenceManual.PrintManual);
-            ReferenceManual.Manual(_manualPrintingAddress);
-            ManualDelegate _manualTestingAddress = new ManualDelegate(ReferenceManual.ManualTesting);
-            ReferenceManual.Manual(_manualPrintingAddress);
+            //ManualDelegate _manualPrintingAddress = new ManualDelegate(ReferenceManual.PrintManual);
+            ReferenceManual.Manual(ReferenceManual.PrintManual);
+            //ManualDelegate _manualTestingAddress = new ManualDelegate(ReferenceManual.ManualTesting);
+            ReferenceManual.Manual(ReferenceManual.ManualTesting);
 
 
             int pairNumber = 4;

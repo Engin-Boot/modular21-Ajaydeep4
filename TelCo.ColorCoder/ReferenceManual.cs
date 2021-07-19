@@ -3,16 +3,14 @@ using System.Diagnostics;
 
 namespace TelCo.ColorCoder
 {
-    public delegate void ManualDelegate();
-
     public class ReferenceManual
     {
         private static readonly int maj_size = PairsDataModel.colorMapMajor.Length;
         private static readonly int min_size = PairsDataModel.colorMapMinor.Length;
 
-        public static void Manual(ManualDelegate funcAddress)
+        public static void Manual(Action obj)
         {
-            funcAddress.Invoke();
+            obj.Invoke();
         }
         public static void PrintManual()
         {
@@ -20,7 +18,9 @@ namespace TelCo.ColorCoder
             for (int i=0; i<maj_size; ++i)
                 for(int j=0; j<min_size; ++j)
                 {
-                    Console.WriteLine("Major-color : {0}, Minor-color : {1}, Pair : {2}", PairsDataModel.colorMapMajor[i], PairsDataModel.colorMapMinor[j], pair_no);
+                    //Debug.Assert(obj.Invoke() == )
+
+                    Console.WriteLine($"Major-color : " + PairsDataModel.colorMapMajor[i] +", Minor-color : " +PairsDataModel.colorMapMinor[j] + ",Pair : "+pair_no);
                     pair_no++;
                 }
 
