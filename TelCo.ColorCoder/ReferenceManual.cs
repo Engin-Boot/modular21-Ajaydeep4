@@ -3,25 +3,7 @@ using System.Diagnostics;
 
 namespace TelCo.ColorCoder
 {
-    public interface IPrint
-    {
-        void PrintLine(string line);
-    }
-    public class PrintOnConsole : IPrint
-    {
-        public void PrintLine(string line)
-        {
-            Console.WriteLine(line);
-        }
-    }
-    public class PrintOnConsoleTest : IPrint
-    {
-        public int timesPrintOnConsoleCalled = 0;
-        public void PrintLine(string line)
-        {
-            timesPrintOnConsoleCalled++;
-        }
-    }
+    
     public class ReferenceManual
     {
         private static readonly int maj_size = PairsDataModel.colorMapMajor.Length;
