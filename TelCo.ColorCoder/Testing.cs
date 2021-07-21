@@ -6,41 +6,44 @@ namespace TelCo.ColorCoder
 {
     class Testing
     {
+        public static void ManualTesting()
+        {
+            int pair_no = 1;
+            for (int i = 0; i < PairsDataModel.colorMapMajor.Length; ++i)
+            {
+                for (int j = 0; j < PairsDataModel.colorMapMajor.Length; ++j)
+                {
+                    PairsDataModel.ColorPair testPair = GetColor.GetColorFromPairNumber(pair_no);
+                    Debug.Assert(testPair.majorColor == PairsDataModel.colorMapMajor[i]);
+                    Debug.Assert(testPair.minorColor == PairsDataModel.colorMapMinor[j]);
+
+                    testPair = new PairsDataModel.ColorPair()
+                    {
+                        majorColor = PairsDataModel.colorMapMajor[i],
+                        minorColor = PairsDataModel.colorMapMinor[j]
+                    };
+                    int pairNumberReceived = GetPair.GetPairNumberFromColor(testPair);
+                    Debug.Assert(pair_no == pairNumberReceived);
+
+                    pair_no++;
+                }
+            }
+        }
+
         private static void Main(string[] args)
         {
+            ManualTesting();
+
             //ManualDelegate _manualPrintingAddress = new ManualDelegate(ReferenceManual.PrintManual);
-            ReferenceManual.Manual(ReferenceManual.PrintManual);
+            ReferenceManual.PrintManual(new PrintOnConsole());
             //ManualDelegate _manualTestingAddress = new ManualDelegate(ReferenceManual.ManualTesting);
-            ReferenceManual.Manual(ReferenceManual.ManualTesting);
+            //ReferenceManual.Manual(ReferenceManual.ManualTesting);
+
+            PrintOnConsoleTest testPrintonConsole = new PrintOnConsoleTest();
+            ReferenceManual.PrintManual(testPrintonConsole);
+            Debug.Assert(testPrintonConsole.timesPrintOnConsoleCalled == 25);
 
 
-            int pairNumber = 4;
-            PairsDataModel.ColorPair testPair1 = GetColor.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.White);
-            Debug.Assert(testPair1.minorColor == Color.Brown);
-
-            pairNumber = 5;
-            testPair1 = GetColor.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.White);
-            Debug.Assert(testPair1.minorColor == Color.SlateGray);
-
-            pairNumber = 23;
-            testPair1 = GetColor.GetColorFromPairNumber(pairNumber);
-            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            Debug.Assert(testPair1.majorColor == Color.Violet);
-            Debug.Assert(testPair1.minorColor == Color.Green);
-
-            PairsDataModel.ColorPair testPair2 = new PairsDataModel.ColorPair() { majorColor = Color.Yellow, minorColor = Color.Green };
-            pairNumber = GetPair.GetPairNumberFromColor(testPair2);
-            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", testPair2, pairNumber);
-            Debug.Assert(pairNumber == 18);
-
-            testPair2 = new PairsDataModel.ColorPair() { majorColor = Color.Red, minorColor = Color.Blue };
-            pairNumber = GetPair.GetPairNumberFromColor(testPair2);
-            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}", testPair2, pairNumber);
-            Debug.Assert(pairNumber == 6);
         }
     }
 }
