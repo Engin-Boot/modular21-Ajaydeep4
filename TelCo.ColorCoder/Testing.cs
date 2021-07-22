@@ -41,7 +41,7 @@ namespace TelCo.ColorCoder
 
             PrintOnConsoleTest testPrintonConsole = new PrintOnConsoleTest();
             ReferenceManual.PrintManual(testPrintonConsole);
-            Debug.Assert(testPrintonConsole.timesPrintOnConsoleCalled == 25);
+            Debug.Assert(testPrintonConsole.timesPrintOnConsoleCalled == PairsDataModel.colorMapMajor.Length*PairsDataModel.colorMapMinor.Length);
 
 
         }
