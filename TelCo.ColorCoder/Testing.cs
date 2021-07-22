@@ -34,14 +34,13 @@ namespace TelCo.ColorCoder
         {
             ManualTesting();
 
-            //ManualDelegate _manualPrintingAddress = new ManualDelegate(ReferenceManual.PrintManual);
             ReferenceManual.PrintManual(new PrintOnConsole());
-            //ManualDelegate _manualTestingAddress = new ManualDelegate(ReferenceManual.ManualTesting);
-            //ReferenceManual.Manual(ReferenceManual.ManualTesting);
 
+            int timesPrintManualCalled = 0;
             PrintOnConsoleTest testPrintonConsole = new PrintOnConsoleTest();
             ReferenceManual.PrintManual(testPrintonConsole);
-            Debug.Assert(testPrintonConsole.timesPrintOnConsoleCalled == PairsDataModel.colorMapMajor.Length*PairsDataModel.colorMapMinor.Length);
+            timesPrintManualCalled++;
+            Debug.Assert(testPrintonConsole.timesPrintOnConsoleCalled == PairsDataModel.colorMapMajor.Length*PairsDataModel.colorMapMinor.Length*timesPrintManualCalled);
 
 
         }
